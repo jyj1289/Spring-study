@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -23,5 +26,12 @@ public class BoardService {
                 .orElseThrow(() -> new IllegalArgumentException("Not found Data"));
 
         return new BoardDto(board);
+    }
+
+    public List<BoardDto> findAll(){
+        return boardRepository.findAll()
+                .stream()
+                .map(BoardDto::new)
+                .collect(Collectors.toList());
     }
 }
