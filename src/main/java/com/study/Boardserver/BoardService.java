@@ -17,4 +17,11 @@ public class BoardService {
 
         return new BoardDto(save);
     }
+
+    public BoardDto findOne(Long id){
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Not found Data"));
+
+        return new BoardDto(board);
+    }
 }
