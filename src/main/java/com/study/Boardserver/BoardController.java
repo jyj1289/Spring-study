@@ -24,4 +24,9 @@ public class BoardController {
     public List<BoardDto> findAll(){
         return boardService.findAll();
     }
+
+    @PutMapping("/board/update")
+    public BoardDto update(@RequestBody BoardDto boardDto){
+        return boardService.update(boardDto);
+    }
 }
