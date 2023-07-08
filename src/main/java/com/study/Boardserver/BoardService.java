@@ -34,4 +34,13 @@ public class BoardService {
                 .map(BoardDto::new)
                 .collect(Collectors.toList());
     }
+
+    public BoardDto update(BoardDto boardDto){
+        Board board = boardRepository.findById(boardDto.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Not found Data"));
+
+        board.update(boardDto.getTitle(), board.getContent());
+
+        return new BoardDto(board);
+    }
 }
