@@ -3,6 +3,8 @@ package com.study.Boardserver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class BoardController {
@@ -16,5 +18,10 @@ public class BoardController {
     @GetMapping("/board/find/{id}")
     public BoardDto findOne(@PathVariable Long id){
         return boardService.findOne(id);
+    }
+
+    @GetMapping("/board/findall")
+    public List<BoardDto> findAll(){
+        return boardService.findAll();
     }
 }
