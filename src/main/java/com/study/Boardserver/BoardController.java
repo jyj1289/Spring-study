@@ -29,4 +29,9 @@ public class BoardController {
     public BoardDto update(@RequestBody BoardDto boardDto){
         return boardService.update(boardDto);
     }
+
+    @DeleteMapping("/board/delete/{id}")
+    public void Delete(@PathVariable Long id){
+        boardService.delete(id);
+    }
 }
